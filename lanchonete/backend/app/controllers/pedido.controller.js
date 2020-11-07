@@ -1,17 +1,17 @@
-const produtoModel = require("../models/produto.model.js");
+const pedidoModel = require("../models/pedido.model.js");
 
 exports.create = (req, res) => {
-    if (!req.body.nome && !req.body.valor) {
+    if (!req.body.status) {
         res.status(400).send({
-            message: "Conteúdo do corpo da requisição está vazio."
+            message: "Conteúdo do corpo da requisição está vazio!"
         });
     } else {
-        const produto = new produtoModel({
-            nome: req.body.nome,
-            valor: req.body.valor
+        const pedido = new pedidoModel({
+            hora: new Date(),
+            status: req.body.status
         });
 
-        produtoModel.create(produto, (err, data) => {
+        pedidoModel.create(pedido, (err, data) => {
             if (err) {
                 res.status(500).send({
                     message: err.message || "Ocorreu um erro"
@@ -21,11 +21,10 @@ exports.create = (req, res) => {
             }
         })
     }
-
 }
 
 exports.findAll = (req, res) => {
-    produtoModel.getAll((err, data) => {
+    pedidoModel.getAll((err, data) => {
         if (err) {
             res.status(500).send({
                 message: err.message || "Ocorreu algum erro"
@@ -36,15 +35,15 @@ exports.findAll = (req, res) => {
 }
 
 exports.findOne = (req, res) => {
-    produtoModel.findById(req.params.produtoId, (err, data) => {
+    pedidoModel.findById(req.params.pedidoId, (err, data) => {
         if (err) {
             if (err.kind == "not_found") {
                 res.status(404).send({
-                    message: "Produto não encontrado. ID:" + req.params.produtoId
+                    message: "Pedido não encontrado. ID:" + req.params.pedidoId
                 });
             } else {
                 res.status(500).send({
-                    message: "Erro ao retornar o produto com ID:" + req.params.produtoId
+                    message: "Erro ao retornar o produto com ID:" + req.params.pedidoId
                 });
             }
         } else
@@ -54,25 +53,24 @@ exports.findOne = (req, res) => {
 }
 
 exports.update = (req, res) => {
-    if (!req.body.nome && !req.body.valor) {
+    if (!req.body.status) {
         res.status(400).send({
             message: "Conteúdo do corpo da requisição está vazio."
         });
     } else {
-        const produto = new produtoModel({
-            nome: req.body.nome,
-            valor: req.body.valor
+        const pedido = new pedidoModel({
+            status: req.body.status
         });
 
-        produtoModel.updateById(req.params.produtoId, produto, (err, data) => {
+        pedidoModel.updateById(req.params.pedidoId, pedido, (err, data) => {
             if (err) {
                 if (err.kind == "not_found") {
                     res.status(404).send({
-                        message: "Produto não encontrado."
+                        message: "Pedido não encontrado."
                     });
                 } else {
                     res.status(500).send({
-                        message: "Erro ao atualizar produto."
+                        message: "Erro ao atualizar pedido."
                     })
                 }
             } else {
@@ -83,26 +81,26 @@ exports.update = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-    produtoModel.remove(req.params.produtoId, (err, data) => {
+    pedidoModel.remove(req.params.pedidoId, (err, data) => {
         if (err) {
             if (err.kind == "not_found") {
-                res.status(404).send({ message: "Produto não encontrado." })
+                res.status(404).send({ message: "Pedido não encontrado." })
             } else {
-                res.status(500).send({ message: "Erro ao deletar produto." })
+                res.status(500).send({ message: "Erro ao deletar pedido." })
             }
         } else {
-            res.send({ messsage: "Produto deletado com sucesso" });
+            res.send({ messsage: "Pedido deletado com sucesso" });
         }
     })
 
 }
 
 exports.deleteAll = (req, res) => {
-    produtoModel.remove((err) => {
+    pedidoModel.remove((err) => {
         if (err) {
-            res.status(500).send({ message: "Erro ao deletar todos os produtos." })
+            res.status(500).send({ message: "Erro ao deletar todos os pedidos." })
         } else {
-            res.send({ messsage: "Todos os produtos deletados com sucesso" });
+            res.send({ messsage: "Todos os pedidos deletados com sucesso" });
         }
     })
 }
