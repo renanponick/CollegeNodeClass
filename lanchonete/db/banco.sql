@@ -85,4 +85,7 @@ INSERT INTO pedidos VALUES(DEFAULT, CURRENT_TIME(), 0);
 INSERT INTO pedidos VALUES(DEFAULT, CURRENT_TIME(), 0);
 INSERT INTO pedidos VALUES(DEFAULT, CURRENT_TIME(), 0);
 
-INSERT INTO produtos_pedidos VALUES(DEFAULT,'sem alface e ervilha e entregar na casa da esquina',4,1)
+INSERT INTO produtos_pedidos VALUES(DEFAULT,'sem alface e ervilha e entregar na casa da esquina',4,1);
+INSERT INTO produtos_pedidos VALUES(DEFAULT,'sem alface e ervilha e entregar na casa da esquina',2,2);
+INSERT INTO produtos_pedidos VALUES(DEFAULT,'sem alface e ervilha e entregar na casa da esquina',4,3);
+INSERT INTO produtos_pedidos VALUES(DEFAULT,'sem alface e ervilha e entregar na casa da esquina',3,4);

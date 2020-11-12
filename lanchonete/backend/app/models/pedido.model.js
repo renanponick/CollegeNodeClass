@@ -12,8 +12,8 @@ PedidoModel.create = (pedido, result) => {
             return;
         }
         result(null, { idpedidos: res.insertId, ...pedido });
-    });
-};
+    })
+}
 
 PedidoModel.getAll = (result) => {
     sql.query("SELECT * FROM pedidos", (err, res) => {
@@ -39,7 +39,7 @@ PedidoModel.findById = (pedidoId, result) => {
             result({ kind: "not_found" }, null)
     })
 
-};
+}
 
 PedidoModel.updateById = (pedidoId, pedido, result) => {
     sql.query("UPDATE pedidos SET status = ? WHERE idpedidos = ? ", [pedido.status, pedidoId], (err, res) => {
