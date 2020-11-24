@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "npm run test:jest --silent",
-    "test:jest": "node_modules/.bin/jest --env=jsdom ./src/test/*.test.js",
-    "test:eslint": "node_modules/.bin/eslint src/*.js --fix"
+    "test:jest": "node_modules/.bin/jest --env=jsdom ./test/*.test.js",
+    "test:eslint": "node_modules/.bin/eslint /*.js --fix"
   },
   "keywords": [
     "API",
