@@ -1,8 +1,8 @@
 <template>
-  <v-layout flex align-center justify-center fill-height>
-    <v-flex xs12 sm4 align-center justify-center>
-      <v-card>
-        <v-card-text class="pt-2">
+     <div class="form-product mt-3 mx-auto">
+        <p class="headline">Adicionar Produto</p>
+
+        <div>
           <v-form v-model="formValido">
             <v-text-field
               label="E-mail"
@@ -40,16 +40,14 @@
               >Criar</v-btn
             >
           </v-form>
-        </v-card-text>
         <v-alert text v-if="msgSucesso != ''" dense color="teal" icon="mdi-account-check" border="left">
         {{msgSucesso}}
         </v-alert>
         <v-alert v-if="msgErro != ''" text prominent type="error" icon="mdi-account-remove">
         {{msgErro}}
         </v-alert>
-      </v-card>
-    </v-flex>
-  </v-layout>
+      </div>
+    </div>
 </template>
 
 <script>

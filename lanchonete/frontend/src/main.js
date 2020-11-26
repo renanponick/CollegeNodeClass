@@ -5,8 +5,11 @@ import vuetify from './plugins/vuetify';
 
 Vue.config.productionTip = false
 
+var islogged = false;
+
 new Vue({
   router,
   vuetify,
+  islogged,
   render: h => h(App)
 }).$mount('#app')

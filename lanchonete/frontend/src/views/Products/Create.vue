@@ -41,7 +41,7 @@
             >{{msgSuccess}}</v-alert>
 
             <v-alert
-                v-if="msgErro!=''"
+                v-if="msgErr!=''"
                 text
                 type="error"
                 icon="mdi-account-remove"
